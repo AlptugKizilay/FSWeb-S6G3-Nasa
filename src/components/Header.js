@@ -1,18 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Header = (props) => {
-    const  getRandomDate = () => {
-        const maxDate = Date.now();
-    const timestamp = Math.floor(Math.random() * maxDate);
-    return new Date(timestamp);
+    const [date, setDate] = useState(props.date);
 
-    } 
     
-console.log(getRandomDate());
+
+
+    const handleDateSubmission = (event) => {
+        event.preventDefault();
+        console.log("Baaaak");
+
+
+    }
+    const handleDateChange = (event) => {
+        event.preventDefault();
+        setDate(event.target.value)
+        console.log(event.target.value);
+    }
+    console.log("date" + date)
+    console.log("dateeeeeeee " + props.dater(date))
+    
+    
     return (
+        
         <div className='header-section'>
             <h1> {props.props.title} </h1>
-            <button onClick={getRandomDate} type="button" className="btn btn-primary">I feel lucky</button>
+            <form onSubmit={(e) => handleDateSubmission(e)}>
+                <label htmlFor="birthday">Birthday:</label>
+                <input onChange={(e) => handleDateChange(e)} type="date" name="datePicker" value={props.date} />
+                <button type="submit">Let's See</button>
+            </form>
         </div>
 
     )
