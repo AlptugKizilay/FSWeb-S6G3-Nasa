@@ -3,7 +3,6 @@ import Product from '../components/Product'
 import Header from '../components/Header'
 
 const Layout = (props) => {
-    console.log(props.dater(20000));
     return (
         <div className="main-container">
             <header className="header">

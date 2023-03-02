@@ -2,25 +2,26 @@ import React, {useEffect, useState} from "react";
 import "./App.css";
 import Layout from "./layout/Layout";
 import axios from "axios"
-import Header from "./components/Header";
+
 
 function App() {
   const [products, setProducts] = useState([]);
-  const [dater, setDater] = useState("30000000000");
+  const [dater, setDater] = useState();
   console.log(dater);
   
   
   useEffect(() => {
    axios.get('https://api.nasa.gov/planetary/apod', {
       params: {
-        api_key : "DEMO_KEY",
-        date: dater,
+        api_key : "j5h5ir7q7ru5NhsI22o2tlHAGihfn3M848dsKdGw",
+        date: dater
         
       }
     })
     .then(function (response) {
       console.log(response);
       setProducts(response.data);
+      
            
       
     })
@@ -31,8 +32,8 @@ function App() {
       // always executed
     }); 
 
-  },[]);
-  console.log(products);
+  },[dater]);
+ /*  console.log(products); */
   
   return (
     <Layout products={products} dater={setDater} />
