@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { Button } from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Header = (props) => {
     const [date, setDate] = useState(props.props.date);
-    
+
     console.log(props.props.date);
 
 
@@ -23,15 +25,35 @@ const Header = (props) => {
 
 
     return (
+        <div className="sticky-top">
+        <div className='header-section' style={{
+            position: "sticky", top: "0",
+                             
 
-        <div className='header-section'>
-            <h1> {props.props.title} </h1>
-            <form onSubmit={(e) => handleDateSubmission(e)}>
+       }}>
+
+            <form onSubmit={(e) => handleDateSubmission(e)} >
                 <label htmlFor="birthday"></label>
-                <input onChange={(e) => handleDateChange(e)} type="date" name="datePicker"  />
-                <button type="submit">Let's See</button>
+                <input onChange={(e) => handleDateChange(e)} type="date" name="datePicker" style={{
+                    width: '100%'
+
+                }} />
+                <div>
+                    <Button
+                        block
+                        color="primary"
+                        outline
+                        size="sm"
+                        type="submit"
+                    >
+                        Let's See
+                    </Button>
+                </div>
+                {/* <button type="submit">Let's See</button> */}
             </form>
         </div>
+        </div>
+        
 
     )
 }

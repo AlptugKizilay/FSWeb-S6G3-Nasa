@@ -5,8 +5,14 @@ import Header from '../components/Header'
 const Layout = (props) => {
     return (
         <div className="main-container">
-            <header className="header">
+            <header className="header" style={{
+                    marginInline:"20%",
+                    marginTop:"1rem",
+                                      
+
+                }}>
                 
+
                 <Header props={props.products} dater={props.dater} />
             </header>
             <div className="body">
